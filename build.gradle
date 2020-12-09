@@ -1,3 +1,7 @@
+plugins{
+	id 'com.diffplug.gradle.spotless' version '4.3.1'
+}
+
 apply plugin: 'java'
 
 apply from: 'jacoco.gradle'
@@ -19,6 +23,23 @@ dependencies {
 	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.6.2'
 }
+
+spotless {
+	java {
+		/*
+		 The ineter format is the default Ecplise 4.15.0 (2020-03) format with on/off tags (@formatter:on/off) enabled
+		 To use the formatter in intellij, import the xml into https://plugins.jetbrains.com/plugin/6546-eclipse-code-formatter
+		 */
+		eclipse().configFile 'spotless/ineter-java-format.xml'
+		importOrder 'java', 'javax', 'org', 'com'
+		removeUnusedImports()
+	}
+	groovyGradle {
+		target '*.gradle'
+		greclipse()
+	}
+}
+
 
 test {
 	useJUnitPlatform()
