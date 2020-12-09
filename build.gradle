@@ -1,5 +1,7 @@
 apply plugin: 'java'
 
+apply from: 'jacoco.gradle'
+
 sourceCompatibility = 8
 if(JavaVersion.current() != JavaVersion.VERSION_1_8){
 	compileJava {

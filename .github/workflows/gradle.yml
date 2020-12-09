@@ -21,6 +21,10 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - uses: codecov/codecov-action@v1
+      name: run codecov
+      with:
+        verbose: true
 
   build_jdk_11:
 

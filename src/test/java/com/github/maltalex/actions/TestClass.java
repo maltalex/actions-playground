@@ -6,9 +6,13 @@ public class TestClass {
 
 	@Test
 	public void passing() {
+		Code c = new Code();
+		c.foobar();
 	}
 
 	@Test
 	public void failing() {
+		Code c = new Code();
+		c.foobar();
 	}
 }
